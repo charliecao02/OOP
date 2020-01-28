@@ -39,7 +39,27 @@ class Fraction{
         return ( ( (double) this.numer) / ( (double) this.denom) );
     }
     public void reduce(){
-        
+        int gcf=GCF(this.numer,this.denom);
+        this.numer=this.numer/gcf;
+        this.denom=this.denom/gcf;
+    }
+    public void setNum(int numer){
+        this.numer=numer;
+    }
+    public void setDenom(int denom){
+        this.denom=denom;
     }
     
+    
+    public static int GCF(int a, int b){
+        while(a!=b){
+            if(a>b){
+                a=a-b;
+            }
+            if(b>a){
+                b=b-a;
+            }
+        }
+        return a;
+    }
 }
