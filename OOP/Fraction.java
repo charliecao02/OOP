@@ -50,8 +50,45 @@ class Fraction{
         this.denom=denom;
     }
     
+    public static Fraction multiply(Fraction a, Fraction b){
+        int num, denom;
+        num=a.numer*b.numer;
+        denom=a.denom*b.denom;
+        Fraction f=new Fraction(num,denom);
+        f.reduce();
+        return f;
+    }
     
-    public static int GCF(int a, int b){
+    public static Fraction divide(Fraction a, Fraction b){
+        int num, denom;
+        num=a.numer*b.denom;
+        denom=a.denom*b.numer;
+        Fraction f=new Fraction(num,denom);
+        f.reduce();
+        return f;
+    }
+    
+    public static Fraction add(Fraction a, Fraction b){
+        int common=a.denom*b.denom;
+        a.numer=a.numer*b.denom;
+        b.numer=b.numer*a.denom;
+        Fraction f=new Fraction(a.numer+b.numer,common);
+        f.reduce();
+        return f;
+    }
+    
+    public static Fraction subtract(Fraction a, Fraction b){
+        int common=a.denom*b.denom;
+        a.numer=a.numer*b.denom;
+        b.numer=b.numer*a.denom;
+        Fraction f=new Fraction(a.numer-b.numer,common);
+        f.reduce();
+        return f;
+    }    
+    
+    private static int GCF(int a, int b){
+        a=Math.abs(a);
+        b=Math.abs(b);
         while(a!=b){
             if(a>b){
                 a=a-b;
